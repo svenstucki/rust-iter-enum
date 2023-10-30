@@ -2,7 +2,8 @@
 
 // mod option1;
 // mod option2;
-mod option3;
+// mod option3;
+mod option4;
 
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub enum Pages {
@@ -12,13 +13,13 @@ pub enum Pages {
 }
 
 pub trait IterableEnum<T> {
-    fn iterator() -> impl Iterator<Item = T>;
+    fn iterator() -> impl DoubleEndedIterator<Item = T>;
     fn first() -> T;
     fn last() -> T;
 }
 
 impl IterableEnum<Pages> for Pages {
-    fn iterator() -> impl Iterator<Item = Pages> {
+    fn iterator() -> impl DoubleEndedIterator<Item = Pages> {
         use Pages::*;
         [Home, Introduction, Glossary].iter().copied()
     }
